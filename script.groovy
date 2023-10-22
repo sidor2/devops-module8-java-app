@@ -1,3 +1,8 @@
+def test() {
+    echo "Testing the application"
+    echo "Executing pipeleine on branch: ${BRANCH_NAME}"
+}
+
 def buildJar() {
     echo "Building the jar file"
     sh "mvn package"

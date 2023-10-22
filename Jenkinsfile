@@ -12,7 +12,19 @@ pipeline {
                 }
             }
         }
+        stage("test") {
+            steps {
+                script {
+                    gv.test()
+                }
+            }
+        }
         stage('build jar') {
+            when {
+                expression {
+                    BRANCH_NAME == 'master'
+                }
+            }
             steps {
                 script {
                     gv.buildJar()
