@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     echo "Building the docker image"
-                    withCredentials([usernamePassword(credentialsId: 'devops-token', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                    withCredentials([usernamePassword(credentialsId: 'devops-token', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                         sh "docker build -t $USER/devops:jma-2.0 ."
                         sh "echo $PASS | docker login -u $USER --password-stdin"
                         sh "docker push $USER/devops:jma-2.0"
