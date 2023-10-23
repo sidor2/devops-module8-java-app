@@ -43,7 +43,7 @@ pipeline {
             }
             steps {
                 script {
-                    buildImage()
+                    buildImage 'ilsoldier/devops:jma-3.0'
                 }
             }
         }
