@@ -35,7 +35,7 @@ pipeline {
                 }
             }
         }
-        stage('build image') {
+        stage('build and push image') {
             when {
                 expression {
                     BRANCH_NAME == 'jenkins-shared-lib'
@@ -44,6 +44,8 @@ pipeline {
             steps {
                 script {
                     buildImage 'ilsoldier/devops:jma-3.0'
+                    dockerLogin()
+                    dockerPush 'ilsoldier/devops:jma-3.0'
                 }
             }
         }
