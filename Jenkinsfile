@@ -31,6 +31,18 @@ pipeline {
                 }
             }
         }
+        stage("increment version") {
+            when {
+                expression {
+                    BRANCH_NAME == 'jenkins-shared-lib'
+                }
+            }
+            steps {
+                script {
+                    gv.incrementVersion()
+                }
+            }
+        }
         stage('build jar') {
             when {
                 expression {
@@ -51,9 +63,9 @@ pipeline {
             }
             steps {
                 script {
-                    buildImage 'ilsoldier/devops:jma-3.0'
+                    buildImage "ilsoldier/devops:$IMAGE_NAME"
                     dockerLogin()
-                    dockerPush 'ilsoldier/devops:jma-3.0'
+                    dockerPush "ilsoldier/devops:$IMAGE_NAME"
                 }
             }
         }
