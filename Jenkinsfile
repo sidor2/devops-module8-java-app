@@ -58,7 +58,7 @@ pipeline {
         stage('build app') {
             steps {
                 script {
-                    vr.clean()
+                    gv.clean()
                 }
             }
         }
