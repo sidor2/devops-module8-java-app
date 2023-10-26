@@ -55,6 +55,13 @@ pipeline {
                 }
             }
         }
+        stage('build app') {
+            steps {
+                script {
+                    vr.clean()
+                }
+            }
+        }
         stage('build and push image') {
             when {
                 expression {

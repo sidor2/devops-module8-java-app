@@ -16,4 +16,9 @@ def incrementVersion() {
     env.IMAGE_NAME = "$version-$BUILD_NUMBER"
 }
 
+def clean() {
+    echo "Cleaning the workspace"
+    sh "mvn clean package"
+}
+
 return this
