@@ -22,7 +22,7 @@ def clean() {
 }
 
 def commitPom() {
-    withCredentials([usernamePassword(credentialsId: '2c40c606-3564-4fc4-8fc2-3a89a016f089', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+    sshagent(['2c40c606-3564-4fc4-8fc2-3a89a016f089']) {
         sh 'git config --global user.email "jenkins@example.com"'
         sh 'git config --global user.name "jenkins"'
 
