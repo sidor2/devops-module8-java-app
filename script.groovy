@@ -21,4 +21,20 @@ def clean() {
     sh "mvn clean package"
 }
 
+def commitPom() {
+    withCredentials([usernamePassword(credentialsId: '2c40c606-3564-4fc4-8fc2-3a89a016f089', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+        sh 'git config --global user.email "jenkins@example.com"'
+        sh 'git config --global user.name "jenkins"'
+
+        sh 'git status'
+        sh 'git branch'
+        sh 'git config --list'
+
+        sh "git remote set-url origin https://${USER}:${PASS}@github.com/sidor2/devops-module8-java-app.git"
+        sh 'git add .'
+        sh 'git commit -m "ci: version bump"'
+        sh 'git push origin HEAD:jenkins-shared-lib'
+    }
+}
+
 return this

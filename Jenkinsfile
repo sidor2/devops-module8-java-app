@@ -88,5 +88,12 @@ pipeline {
                 }
             }
         }
+        stage('Commit version update') {
+            steps {
+                script {
+                    gv.commitPom()
+                }
+            }
+        }
     }
 }
