@@ -88,7 +88,7 @@ pipeline {
                 }
             }
         }
-        stage('Commit version update') {
+        stage('Commit version bump') {
             steps {
                 script {
                     gv.commitPom()
