@@ -30,7 +30,7 @@ def commitPom() {
         sh 'git branch'
         sh 'git config --list'
 
-        sh "git remote set-url origin https://${USER}:${PASS}@github.com/sidor2/devops-module8-java-app.git"
+        sh "git remote set-url origin git@github.com:sidor2/devops-module8-java-app.git"
         sh 'git add .'
         sh 'git commit -m "ci: version bump"'
         sh 'git push origin HEAD:jenkins-shared-lib'
